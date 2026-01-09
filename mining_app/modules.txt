@@ -1,1 +1,2 @@
 Mining App
+Mining Setup
