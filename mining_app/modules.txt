@@ -1,2 +1,4 @@
 Mining App
 Mining Setup
+Mining HR
+Mining Selling
