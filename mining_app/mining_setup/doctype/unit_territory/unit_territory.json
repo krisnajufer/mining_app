@@ -1,15 +1,20 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:territory",
+ "autoname": "field:territory_code",
  "creation": "2026-01-09 17:55:07.726200",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "unit",
+  "territory_code",
   "territory",
   "description",
-  "is_external"
+  "is_active",
+  "is_external",
+  "accounting_details_section",
+  "account"
  ],
  "fields": [
   {
@@ -24,7 +29,7 @@
    "fieldname": "territory",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Wilayah",
+   "label": "Nama",
    "reqd": 1,
    "unique": 1
   },
@@ -32,7 +37,7 @@
    "fieldname": "description",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Description"
+   "label": "Deskripsi"
   },
   {
    "default": "0",
@@ -40,12 +45,44 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Is External"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "accounting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Details"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Akun",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "territory_code",
+   "fieldtype": "Data",
+   "label": "Kode",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-09 17:59:05.003518",
+ "modified": "2026-01-12 13:31:50.673354",
  "modified_by": "Administrator",
  "module": "Mining Setup",
  "name": "Unit Territory",
