@@ -6,24 +6,67 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "item"
+  "unit_code",
+  "unit_name",
+  "item_code",
+  "item_name",
+  "item_alias",
+  "item_price"
  ],
  "fields": [
   {
-   "fieldname": "item",
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Barang",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_alias",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Barang Alias"
+  },
+  {
+   "fieldname": "unit_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Kode Unit",
+   "options": "Unit",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "unit_code.unit_name",
+   "fieldname": "unit_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Unit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Harga Jual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Item",
-   "options": "Item"
+   "label": "Barang",
+   "options": "Item",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-01-12 15:04:30.815155",
+ "modified": "2026-01-13 16:52:26.116933",
  "modified_by": "Administrator",
  "module": "Mining Selling",
  "name": "Customer Item Preference",
