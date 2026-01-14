@@ -13,6 +13,9 @@ frappe.ui.form.on("Delivery Note", {
     },
     customer(frm){
         filterSalesOrder(frm);
+    },
+    sales_order(frm){
+        showDialogPickSO(frm);
     }
 })
 
@@ -48,4 +51,29 @@ function filterSalesOrder(frm) {
             }
         }
     })
+}
+
+function showDialogPickSO(frm) {
+    if (!frm.doc.sales_order) {
+        return
+    }
+    erpnext.utils.map_current_doc({
+        method: "erpnext.selling.doctype.sales_order.sales_order.make_delivery_note",
+        args: {
+            for_reserved_stock: 1,
+        },
+        source_doctype: "Sales Order",
+        target: frm,
+        setters: {
+            customer: frm.doc.customer
+        },
+        get_query_filters: {
+            docstatus: 1,
+            name: frm.doc.sales_order
+        },
+        allow_child_item_selection: true,
+        child_fieldname: "items",
+        child_columns: ["item_code", "item_name", "qty"],
+        select_child_items: true
+    });
 }

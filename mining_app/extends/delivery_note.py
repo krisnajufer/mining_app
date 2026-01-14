@@ -14,6 +14,7 @@ def filter_sales_order_customer(doctype, txt, searchfield, start, page_len, filt
             & (sales_order.customer == filters.get("customer"))
             & (sales_order.per_delivered < 99.99)
             & (sales_order.status.notin(not_status))
+            & (sales_order.docstatus == 1)
         )
         .where(
             (sales_order.name.like(txt))
