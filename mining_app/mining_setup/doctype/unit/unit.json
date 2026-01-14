@@ -41,7 +41,7 @@
    "reqd": 1
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "is_active",
    "fieldtype": "Check",
    "label": "Is Active"
@@ -50,7 +50,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-12 13:29:49.107268",
+ "modified": "2026-01-14 10:39:37.383347",
  "modified_by": "Administrator",
  "module": "Mining Setup",
  "name": "Unit",
