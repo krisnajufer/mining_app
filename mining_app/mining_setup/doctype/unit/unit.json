@@ -10,7 +10,10 @@
   "unit_code",
   "unit_name",
   "description",
-  "is_active"
+  "is_active",
+  "section_break_slcy",
+  "cost_center",
+  "warehouse"
  ],
  "fields": [
   {
@@ -45,12 +48,30 @@
    "fieldname": "is_active",
    "fieldtype": "Check",
    "label": "Is Active"
+  },
+  {
+   "fieldname": "section_break_slcy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-14 10:39:37.383347",
+ "modified": "2026-01-14 11:24:28.710878",
  "modified_by": "Administrator",
  "module": "Mining Setup",
  "name": "Unit",
