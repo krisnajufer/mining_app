@@ -16,7 +16,7 @@ from erpnext.stock.doctype.item.item import get_item_defaults
 class DeliveryNoteInternal(DeliveryNote):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		self.status_updater = [
+		self.status_updater.append(
 			{
 				"source_dt": "Delivery Note Internal Item",
 				"target_dt": "Sales Order Item",
@@ -29,39 +29,9 @@ class DeliveryNoteInternal(DeliveryNote):
 				"percent_join_field": "against_sales_order",
 				"status_field": "delivery_status_internal",
 				"keyword": "Delivered",
-				"second_source_dt": "Sales Invoice Item",
-				"second_source_field": "qty",
-				"second_join_field": "so_detail",
 				"overflow_type": "delivery",
-				"second_source_extra_cond": """ and exists(select name from `tabSales Invoice`
-				where name=`tabSales Invoice Item`.parent and update_stock = 1)""",
-			},
-			{
-				"source_dt": "Delivery Note Internal Item",
-				"target_dt": "Sales Invoice Item",
-				"join_field": "si_detail",
-				"target_field": "delivered_internal_qty",
-				"target_parent_dt": "Sales Invoice",
-				"target_ref_field": "qty",
-				"source_field": "qty",
-				"percent_join_field": "against_sales_invoice",
-				"overflow_type": "delivery",
-				"no_allowance": 1,
-			},
-			{
-				"source_dt": "Delivery Note Internal Item",
-				"target_dt": "Pick List Item",
-				"join_field": "pick_list_item",
-				"target_field": "delivered_internal_qty",
-				"target_parent_dt": "Pick List",
-				"target_parent_field": "per_delivered_internal",
-				"target_ref_field": "picked_qty",
-				"source_field": "stock_qty",
-				"percent_join_field": "against_pick_list",
-				"status_field": "delivery_status_internal",
-				"keyword": "Delivered",
-			},
-		]
+			}
+		)
 		
 	def validate(self):
 		super().validate()
@@ -181,7 +151,7 @@ def make_delivery_note(source_name, target_doc=None, kwargs=None):
 			"doctype": "Delivery Note Item",
 			"field_map": {
 				"rate": "rate",
-				"name": "delivery_note_internal_item",
+				"name": "dn_internal_detail",
 				"parent": "against_delivery_note_internal",
 				"so_detail": "so_detail",
 				"against_sales_order": "against_sales_order",

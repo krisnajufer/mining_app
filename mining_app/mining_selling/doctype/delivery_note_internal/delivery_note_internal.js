@@ -72,10 +72,12 @@ function showDialogPickSO(frm) {
         },
         get_query_filters: {
             docstatus: 1,
-            name: frm.doc.sales_order
+            name: frm.doc.sales_order,
+            per_delivered: 0,
+            per_delivered_internal: ["<", 99.99],
         },
         allow_child_item_selection: true,
         child_fieldname: "items",
-        child_columns: ["item_code", "item_name", "qty"]
+        child_columns: ["po_no", "item_code", "item_name", "qty"]
     });
 }

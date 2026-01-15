@@ -22,4 +22,4 @@ def filter_sales_order_customer(doctype, txt, searchfield, start, page_len, filt
         )
     )
 
-    return query.run(debug=True)
+    return query.run(debug=False)

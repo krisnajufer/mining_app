@@ -133,9 +133,10 @@ doctype_js = {
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Delivery Note": "mining_app.overrides.delivery_note.DeliveryNote",
+	"Sales Order": "mining_app.overrides.sales_order.SalesOrder"
+}
 
 # Document Events
 # ---------------
