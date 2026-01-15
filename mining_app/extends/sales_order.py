@@ -125,14 +125,14 @@ def make_delivery_note_internal(source_name, target_doc=None, kwargs=None):
 				return False
 
 		return (
-			(abs(doc.delivered_qty) < abs(doc.qty)) or is_unit_price_row(doc)
+			(abs(doc.delivered_internal_qty) < abs(doc.qty)) or is_unit_price_row(doc)
 		) and doc.delivered_by_supplier != 1
 
 	def update_item(source, target, source_parent):
-		target.base_amount = (flt(source.qty) - flt(source.delivered_qty)) * flt(source.base_rate)
-		target.amount = (flt(source.qty) - flt(source.delivered_qty)) * flt(source.rate)
+		target.base_amount = (flt(source.qty) - flt(source.delivered_internal_qty)) * flt(source.base_rate)
+		target.amount = (flt(source.qty) - flt(source.delivered_internal_qty)) * flt(source.rate)
 		target.qty = (
-			flt(source.qty) if is_unit_price_row(source) else flt(source.qty) - flt(source.delivered_qty)
+			flt(source.qty) if is_unit_price_row(source) else flt(source.qty) - flt(source.delivered_internal_qty)
 		)
 
 		item = get_item_defaults(target.item_code, source_parent.company)

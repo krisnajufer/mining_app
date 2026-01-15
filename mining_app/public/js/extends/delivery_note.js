@@ -16,6 +16,9 @@ frappe.ui.form.on("Delivery Note", {
     },
     sales_order(frm){
         showDialogPickSO(frm);
+    },
+    is_internal_delivery_note(frm){
+        showDialogPickDNI(frm);
     }
 })
 
@@ -73,7 +76,30 @@ function showDialogPickSO(frm) {
         },
         allow_child_item_selection: true,
         child_fieldname: "items",
-        child_columns: ["item_code", "item_name", "qty"],
-        select_child_items: true
+        child_columns: ["item_code", "item_name", "qty"]
+    });
+}
+
+function showDialogPickDNI(frm) {
+    if (!frm.doc.is_internal_delivery_note) {
+        return
+    }
+    erpnext.utils.map_current_doc({
+        method: "mining_app.mining_selling.doctype.delivery_note_internal.delivery_note_internal.make_delivery_note",
+        args: {
+            for_reserved_stock: 1,
+        },
+        source_doctype: "Delivery Note Internal",
+        target: frm,
+        setters: {
+            customer: frm.doc.customer
+        },
+        get_query_filters: {
+            docstatus: 1,
+            sales_order: frm.doc.sales_order
+        },
+        allow_child_item_selection: true,
+        child_fieldname: "items",
+        child_columns: ["po_customer_no", "delivery_no", "item_code", "item_name", "qty"],
     });
 }
