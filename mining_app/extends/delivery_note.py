@@ -58,7 +58,8 @@ def make_ste_receipt(self, method):
     self.stock_entry = ste.name
 
 def cancel_ste_receipt(self, method):
-    if not self.stock_entry and self.docstatus == 2:
+    if not self.stock_entry:
         return
     
     frappe.get_doc("Stock Entry", self.stock_entry).cancel()
+    frappe.db.set_value("Delivery Note", self.name, "stock_entry", None)

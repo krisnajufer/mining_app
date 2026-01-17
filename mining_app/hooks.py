@@ -154,6 +154,7 @@ doc_events = {
     "Delivery Note": {
         "after_insert": "mining_app.extends.delivery_note.make_ste_receipt",
         "on_cancel": "mining_app.extends.delivery_note.cancel_ste_receipt",
+        "on_trash": "mining_app.extends.delivery_note.cancel_ste_receipt",
     }
 }
 
