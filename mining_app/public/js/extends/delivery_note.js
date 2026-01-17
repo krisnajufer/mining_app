@@ -74,6 +74,7 @@ function showDialogPickSO(frm) {
             docstatus: ["=", 1],
             name: ["=", frm.doc.sales_order],
             per_delivered: ["<", 99.99],
+            delivery_status_internal: ["=", "Not Delivered"]
         },
         allow_child_item_selection: true,
         child_fieldname: "items",
@@ -98,6 +99,7 @@ function showDialogPickDNI(frm) {
         get_query_filters: {
             docstatus: ["=", 1],
             sales_order: frm.doc.sales_order,
+            delivery_status: ["=", "Not Delivered"],
             per_delivered: ["<", 99.99],
         },
         allow_child_item_selection: true,
