@@ -74,6 +74,7 @@ function showDialogPickSO(frm) {
             docstatus: 1,
             name: frm.doc.sales_order,
             per_delivered: 0,
+            delivery_status: ["=", "Not Delivered"],
             per_delivered_internal: ["<", 99.99],
         },
         allow_child_item_selection: true,

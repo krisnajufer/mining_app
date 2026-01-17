@@ -150,6 +150,10 @@ doc_events = {
 # 	}
     "Customer": {
         "on_update": "mining_app.extends.customer.process_price_customer"
+    },
+    "Delivery Note": {
+        "after_insert": "mining_app.extends.delivery_note.make_ste_receipt",
+        "on_cancel": "mining_app.extends.delivery_note.cancel_ste_receipt",
     }
 }
 
